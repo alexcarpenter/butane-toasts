@@ -14,7 +14,7 @@ Toasts.add('New toast');
 
 ## Options
 
-### prefix - default `butane`
+### prefix
 
 `Toast.init({ prefix: 'custom' });`
 
