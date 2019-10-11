@@ -1,0 +1,70 @@
+:root {
+  --butane-toast-spacing: 1rem;
+  --butane-toast-padding: 1rem;
+  --butane-toast-background-color: #fff;
+  --butane-toast-border-color: #eee;
+  --butane-toast-border-size: 1px;
+  --butane-toast-border-radius: 4px;
+}
+
+@keyframes ButaneToastEnter {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+}
+
+@keyframes ButaneToastExit {
+  from {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+
+.tm-toast-container {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+}
+
+.tm-toast {
+  display: flex;
+  border: var(--butane-toast-border-size) solid var(--butane-toast-border-color);
+  border-radius: var(--butane-toast-border-radius);
+  background-color: var(--butane-toast-background-color);
+  animation-duration: 0.3s;
+  animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+  animation-fill-mode: forwards;
+  animation-name: ButaneToastEnter;
+}
+
+.tm-toast--exit {
+  animation-name: ButaneToastExit;
+}
+
+.tm-toast + .tm-toast {
+  margin-top: var(--butane-toast-spacing);
+}
+
+.tm-toast__message {
+  padding: var(--butane-toast-padding);
+}
+
+.tm-toast__dismiss {
+  margin-left: auto;
+  padding: var(--butane-toast-padding);
+  border: 0;
+  border-left: var(--butane-toast-border-size) solid var(--butane-toast-border-color);
+  font-size: inherit;
+  cursor: pointer;
+}
