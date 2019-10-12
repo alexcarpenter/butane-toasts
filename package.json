@@ -6,10 +6,11 @@
   "module": "dist/butane-toast.esm.js",
   "browser": "dist/butane-toast.umd.js",
   "scripts": {
-    "build": "rollup -c",
+    "build": "rollup -c && npm run cp:demo",
     "dev": "rollup -c -w",
     "test": "jest",
-    "test:watch": "jest --watch ./src/**/*.js"
+    "test:watch": "jest --watch ./src/**/*.js",
+    "cp:demo": "cp dist/butane-toast.umd.js demo/_includes/butane-toasts.js && cp src/index.css demo/_includes/butane-toasts.css"
   },
   "author": "alexcarpenter",
   "license": "MIT",
