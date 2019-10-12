@@ -18,13 +18,19 @@ Toasts.add('New toast');
 
 `Toast.init({ prefix: 'custom' });`
 
+### position
+
+`Toast.init({ position: 'bottom-right' });`
+
+`butane-toasts` CSS supports 'bottom-right' (default), 'top-right', 'bottom-left', 'top-right'
+
 ## API
 
-### add(message, timeout)
+### .add(message, timeout, type)
 
-`Toasts.add('Failed to submit', 2500);`
+`Toasts.add('Failed to submit', 2500, 'success');`
 
-### dispose()
+### .dispose()
 
 `Toasts.dispose();`
 
