@@ -17,7 +17,13 @@ it('renders container', () => {
   expect(container).toBeInTheDocument();
 });
 
-it('renders toast', () => {
+it('supports custom placement', () => {
+  Toasts.init({ position: 'top-right' });
+  const container = getByTestId(document.body, 'butane-toast-container');
+  expect(container).toHaveClass('butane-toast-container--top-right');
+})
+
+it('renders custom prefix', () => {
   Toasts.init({ prefix: 'custom' });
   const container = getByTestId(document.body, 'butane-toast-container');
   expect(container).toHaveClass('custom-toast-container');
@@ -40,6 +46,7 @@ it('renders multiple toasts', () => {
   expect(toasts.length).toEqual(3);
 });
 
+
 it('renders custom markup', () => {
   Toasts.init();
   const message = document.createElement('p');
@@ -48,6 +55,13 @@ it('renders custom markup', () => {
   expect(message).toContainHTML(
     '<p><strong>Important</strong> toast message</p>',
   );
+});
+
+it('supports a type option', () => {
+  Toasts.init();
+  Toasts.add('test', null, 'success');
+  const toast = getByTestId(document.body, 'butane-toast');
+  expect(toast).toHaveClass('butane-toast--success');
 });
 
 it('dismisses on click', () => {
@@ -65,7 +79,19 @@ it('dismisses on click', () => {
   expect(toast).toHaveClass('butane-toast--exit');
 });
 
-xit('autodimisses after timeout', () => {
+xit('autodimisses after timeout', async () => {
   Toasts.init();
-  Toasts.add('this is a sample toast message', 1000);
+  Toasts.add('test', 1000);
+});
+
+it('disposes toast and container', () => {
+  Toasts.init();
+  Toasts.add('test');
+  const container = getByTestId(document.body, 'butane-toast-container');
+  const toast = getByTestId(document.body, 'butane-toast');
+  expect(toast).toBeInTheDocument();
+  expect(container).toBeInTheDocument();
+  Toasts.dispose();
+  expect(toast).not.toBeInTheDocument();
+  expect(container).not.toBeInTheDocument();
 });
