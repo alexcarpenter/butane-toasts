@@ -1,54 +1,56 @@
 const ButaneToasts = (() => {
-  'use strict';
-
   let config;
   let container;
 
   const createContainer = () => {
     container = document.createElement('div');
-    container.className = `${config.prefix}-toast-container`;
+    container.className = `${config.prefix}-toast-container ${config.prefix}-toast-container--${config.position}`;
     container.dataset.testid = 'butane-toast-container';
     document.body.appendChild(container);
   };
 
-  const createToast = (msg, timeout) => {
-    const toast = document.createElement('div');
-    const message = document.createElement('div');
-    const button = document.createElement('button');
+  const createToast = (message, timeout, type) => {
+    const _toast = document.createElement('div');
+    const _message = document.createElement('div');
+    const _button = document.createElement('button');
 
-    toast.dataset.testid = 'butane-toast';
-    toast.className = `${config.prefix}-toast`;
-    message.className = `${config.prefix}-toast__message`;
-    button.className = `${config.prefix}-toast__dismiss`;
-
-    if (typeof msg === 'string') {
-      message.textContent = msg;
-    } else {
-      message.appendChild(msg);
+    _toast.dataset.testid = 'butane-toast';
+    _toast.className = `${config.prefix}-toast`;
+    if (type) {
+      _toast.classList.add(`${config.prefix}-toast--${type}`);
     }
-    button.textContent = 'Dismiss';
+    _message.className = `${config.prefix}-toast__message`;
+    _button.className = `${config.prefix}-toast__dismiss`;
 
-    toast.appendChild(message);
-    toast.appendChild(button);
+    if (typeof message === 'string') {
+      _message.textContent = message;
+    } else {
+      _message.appendChild(message);
+    }
+    _button.textContent = 'Dismiss';
 
-    container.appendChild(toast);
+    _toast.appendChild(_message);
+    _toast.appendChild(_button);
 
-    if (timeout) autoDismiss(toast, timeout);
+    container.appendChild(_toast);
+
+    if (timeout) autoDismiss(_toast, timeout);
   };
 
-  const add = (x, y) => createToast(x, y);
+  const add = (message, timeout, type) => createToast(message, timeout, type);
 
   const remove = async toast => {
     toast.classList.add(`${config.prefix}-toast--exit`);
     await new Promise(resolve => {
+      const animationName = window.getComputedStyle(toast).animationName;
       const eventName = whichAnimationEvent(toast);
-      if (eventName) {
+      if (animationName !== 'none') {
         toast.addEventListener(eventName, () => resolve());
       } else {
         resolve();
       }
     });
-    toast.remove();
+    toast.parentNode.removeChild(toast);
   };
 
   const autoDismiss = (toast, timeout) => {
@@ -66,6 +68,7 @@ const ButaneToasts = (() => {
     config = {
       ...{
         prefix: 'butane',
+        position: 'bottom-right',
       },
       ...options,
     };
@@ -78,7 +81,7 @@ const ButaneToasts = (() => {
     document.removeEventListener('click', dismiss, false);
   };
 
-  const whichAnimationEvent = el => {
+  const whichAnimationEvent = element => {
     const animations = {
       animation: 'animationend',
       OAnimation: 'oAnimationEnd',
@@ -87,7 +90,7 @@ const ButaneToasts = (() => {
     };
 
     for (const key of Object.keys(animations)) {
-      if (el.style[key] !== undefined) {
+      if (element.style[key] !== undefined) {
         return animations[key];
       }
     }
