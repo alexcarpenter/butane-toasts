@@ -7,7 +7,7 @@ export default [
   {
     input: 'src/index.js',
     output: {
-      name: 'butane-toasts',
+      name: 'ButaneToasts',
       file: pkg.browser,
       format: 'umd',
     },
