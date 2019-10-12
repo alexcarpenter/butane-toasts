@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    {% include "butane-toasts.css" %}
+    {% include "site.css" %}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>butane-toasts</h1>
+    <p>A small library for creating toast messages</p>
+    <iframe src="https://ghbtns.com/github-btn.html?user=alexcarpenter&repo=butane-toasts&type=star&count=true" frameborder="0" scrolling="0" width="170px" height="20px"></iframe>
+  </header>
+
+  <main>
+    <section>
+      <form id="toast-form">
+        <label>
+          Message (required)
+          <input type="text" id="toast-form-message" required>
+        </label>
+
+        <label>
+          Timeout
+          <input type="text" id="toast-form-timeout" value="2000">
+        </label>
+
+        <label>
+          Type
+          <select>
+            <option value="">Default</option>
+            <option value="success">Success</option>
+            <option value="error">Error</option>
+            <option value="warning">Warning</option>
+            <option value="notice">Notice</option>
+          </select>
+        </label>
+
+        <div><button>Generate toast</button></div>
+      </form>
+    </section>
+
+    <section>
+      <h2>Usage</h2>
+<pre><code>import Toasts from 'butane-toast';
+Toasts.init();
+Toasts.add('This is a sample message');</code></pre>
+    </section>
+
+    <section>
+      <h2>Options</h2>
+
+      <h3>
+        prefix
+      </h3>
+
+      <pre><code>Toast.init({ prefix: 'custom' });</code></pre>
+
+      <h3>
+        position
+      </h3>
+
+      <pre><code>Toast.init({ position: 'bottom-right' });</code></pre>
+    </section>
+
+    <section>
+      <h2>API</h2>
+
+      <h3>
+        .add(message, timeout, type)
+      </h3>
+
+      <pre><code>Toasts.add('Failed to submit', 2500, 'success');</code></pre>
+
+      <h3>
+        .dispose()
+      </h3>
+
+      <pre><code>Toasts.dispose();</code></pre>
+    </section>
+  </main>
+
+  <footer>
+    <p>MIT License © 2019 <a href="https://alexcarpenter.me">Alex Carpenter</a>
+  </footer>
+
+  <script>
+    {% include "butane-toasts.js" %}
+    {% include "site.js" %}
+  </script>
+</body>
+</html>

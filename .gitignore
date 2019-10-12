@@ -1,3 +1,4 @@
 node_modules
 dist/
-demo/
+demo/_site
+demo/node_modules
