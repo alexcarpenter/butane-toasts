@@ -1,6 +1,12 @@
 ---
 layout:  layout.njk
 ---
+## Install
+
+```
+$ npm install butane-toasts --save
+```
+
 ## Usage
 
 ```js

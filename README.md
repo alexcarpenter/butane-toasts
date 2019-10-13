@@ -2,9 +2,15 @@
 
 > A small library for creating toast messages
 
+## Install
+
+```bash
+$ npm install butane-toasts --save
+```
+
 ## Usage
 
-```jsx
+```js
 import Toasts from 'butane-toasts';
 
 Toasts.init();
@@ -16,11 +22,15 @@ Toasts.add('New toast');
 
 ### prefix
 
-`Toast.init({ prefix: 'custom' });`
+```js
+Toast.init({ prefix: 'custom' });
+```
 
 ### position
 
-`Toast.init({ position: 'bottom-right' });`
+```js
+Toast.init({ position: 'bottom-right' });
+```
 
 Options include `bottom-right`, `bottom-left`, `top-right`, `top-left`.
 
@@ -28,11 +38,15 @@ Options include `bottom-right`, `bottom-left`, `top-right`, `top-left`.
 
 ### .add(message, timeout, type)
 
-`Toasts.add('Failed to submit', 2500, 'success');`
+```js
+Toasts.add('Failed to submit', 2500, 'success');
+```
 
 ### .dispose()
 
-`Toasts.dispose();`
+```js
+Toasts.dispose();
+```
 
 ## License
 
