@@ -14,13 +14,13 @@ Toasts.add('This is a sample message');
 ### prefix
 
 ```js
-Toast.init({ prefix: 'custom' });
+Toasts.init({ prefix: 'custom' });
 ```
 
 ### position
 
 ```js
-Toast.init({ position: 'bottom-right' });
+Toasts.init({ position: 'bottom-right' });
 ```
 
 Options include `bottom-right`, `bottom-left`, `top-right`, `top-left`.
