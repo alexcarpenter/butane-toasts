@@ -3,7 +3,7 @@ layout:  layout.njk
 ---
 ## Install
 
-```
+```bash
 $ npm install butane-toasts --save
 ```
 
