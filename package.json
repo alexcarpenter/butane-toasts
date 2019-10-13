@@ -1,6 +1,6 @@
 {
   "name": "butane-toasts",
-  "version": "1.0.0",
+  "version": "1.0.0-1",
   "description": "A small library for creating toast messages",
   "main": "dist/butane-toast.cjs.js",
   "module": "dist/butane-toast.esm.js",
