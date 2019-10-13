@@ -1,0 +1,25 @@
+<form id="toast-form">
+  <label>
+    Message (required)
+    <input type="text" id="toast-form-message" required>
+  </label>
+
+  <label>
+    Timeout (ms)
+    <input type="text" id="toast-form-timeout" value="3000">
+    <small>Leave blank to create a persistant toast</small>
+  </label>
+
+  <label>
+    Type
+    <select>
+      <option value="">Default</option>
+      <option value="success">Success</option>
+      <option value="error">Error</option>
+      <option value="warning">Warning</option>
+      <option value="notice">Notice</option>
+    </select>
+  </label>
+
+  <div><button>Generate toast</button></div>
+</form>
