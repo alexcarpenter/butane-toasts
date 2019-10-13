@@ -1,6 +1,6 @@
 # butane-toasts
 
-> Library for creating toast notifications.
+> A small library for creating toast messages
 
 ## Usage
 
@@ -22,7 +22,7 @@ Toasts.add('New toast');
 
 `Toast.init({ position: 'bottom-right' });`
 
-`butane-toasts` CSS supports 'bottom-right' (default), 'top-right', 'bottom-left', 'top-right'
+Options include `bottom-right`, `bottom-left`, `top-right`, `top-left`.
 
 ## API
 
