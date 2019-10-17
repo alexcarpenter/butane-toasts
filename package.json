@@ -2,16 +2,17 @@
   "name": "butane-toasts",
   "version": "1.0.0-1",
   "description": "A small library for creating toast messages",
-  "main": "dist/butane-toast.cjs.js",
-  "module": "dist/butane-toast.esm.js",
-  "browser": "dist/butane-toast.umd.js",
+  "main": "dist/butane-toasts.cjs.js",
+  "module": "dist/butane-toasts.esm.js",
+  "browser": "dist/butane-toasts.umd.js",
   "scripts": {
     "build": "rollup -c && npm run cp:css",
     "dev": "rollup -c -w",
     "test": "jest",
     "test:watch": "jest --watch ./src/**/*.js",
     "cp:css": "cp src/index.css dist/butane-toasts.css",
-    "cp:demo": "cp dist/butane-toast.umd.js demo/_includes/butane-toasts.js && cp src/index.css demo/_includes/butane-toasts.css"
+    "cp:js": "cp dist/butane-toasts.umd.js demo/_includes/butane-toasts.js",
+    "cp:demo": "npm run cp:css && npm run cp:js"
   },
   "author": "alexcarpenter",
   "license": "MIT",
